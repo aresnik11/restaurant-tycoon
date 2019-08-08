@@ -19,11 +19,9 @@ class Restaurant
     end
 
     def total_rent
-        total = 0
-        self.locations.each do |location|
-            total += location.rent
+        self.locations.reduce(0) do |sum, location|
+            sum + location.rent
         end
-        total
     end
 
     def create_location(location, rent)
